@@ -9,6 +9,7 @@ import (
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/pkg/util"
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"net"
 	"net/smtp"
 	"strings"

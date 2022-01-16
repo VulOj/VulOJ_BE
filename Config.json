@@ -1,30 +1,19 @@
 {
   "Key":"a9fcc37087ec38fdea95b26a15b2569a7470024712ef36adc5bb8b9fd9eb53d8",
   "DbSettings":{
-    "Username":"test_account",
-    "Password" :"PivotStudio@2020",
-    "Hostname" :"rm-2zeok8s8lj4322wc3do.mysql.rds.aliyuncs.com:3306",
-    "Dbname" :"husthole_test"
-  },
-  "DbSettings2":{
     "Username":"root",
-    "Password" :"Sby1720648723",
+    "Password" :"123456",
     "Hostname" :"127.0.0.1:3306",
-    "Dbname" :"husthole"
+    "Dbname" :"VulOJ"
   },
-  "EmailSenderSettings2":{
+  "EmailSenderSettings":{
     "email":"shenboyu2020@163.com",
     "password":"WOEVMSPVCYASVDNS",
     "servername":"smtp.163.com"
   },
-  "EmailSenderSettings":{
-    "email":"xieyuschen@163.com",
-    "password":"IAEKCLPMNAFLQATX",
-    "servername":"smtp.163.com:465"
-  },
   "RedisSettings": {
-    "Address":"39.105.146.221",
-    "Password":"Pivot_Studio_2020" ,
+    "Address":"127.0.0.1",
+    "Password":"" ,
     "Port": "6379"
   }
 }
