@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/VulOJ/Vulnerable_Online_Judge_Project/pkg/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
