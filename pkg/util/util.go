@@ -1,6 +1,9 @@
 package util
 
-import "log"
+import (
+	"log"
+	"time"
+)
 
 func CheckError(err error) bool {
 	if err != nil {
@@ -8,4 +11,12 @@ func CheckError(err error) bool {
 		return true
 	}
 	return false
+}
+
+func ConvertShanghaiTimeZone(t time.Time) (time.Time, error) {
+	loc, err := time.LoadLocation("Asia/Shanghai")
+	if err == nil {
+		t = t.In(loc)
+	}
+	return t, err
 }

@@ -29,7 +29,7 @@ func InitRouter(r *gin.Engine) {
 			//		SendVerifyCode)
 			//	user.POST("/changePasswordEmail", ChangePasswordByEmail)
 			//	user.POST("/changePasswordVerifyCode", ChangePasswordVerifyCode)
-			//	user.Use(Auth())
+			user.Use(Auth())
 			//	user.GET("/getEnterpriseOfUser",GetEnterprisesOfUser)
 			//	user.GET("/getProjectsOfUser",GetProjectsOfUser)
 			//}
@@ -39,14 +39,14 @@ func InitRouter(r *gin.Engine) {
 			{
 				blog.GET("/getBlogNumber", GetBlogsNumber)
 				blog.GET("", GetBlogs)
-				//	blog.GET("/detail/:blog_id",GetBlog)
-				//	blog.GET("/comment/:blog_id",GetCommentOfBlog)
-				//	blog.Use(Auth())
-				//	{
-				//		blog.POST("/comment", AddComment)
-				//		blog.POST("", middleware.IpLimiter("post/addblog", 5), AddBlog)
-				//		blog.DELETE("", DeleteBlog)
-				//	}
+				blog.GET("/detail/:blog_id", GetBlog)
+				blog.GET("/comment/:blog_id", GetCommentOfBlog)
+				blog.Use(Auth())
+				{
+					blog.POST("/comment", AddComment)
+					blog.POST("", middleware.IpLimiter("post/add_blog", 5), AddBlog)
+					blog.DELETE("", DeleteBlog)
+				}
 			}
 			//
 			//admin:=api.Group("/admin")
