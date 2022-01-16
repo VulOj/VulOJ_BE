@@ -34,7 +34,7 @@ func InitRouter(r *gin.Engine) {
 			//	user.GET("/getEnterpriseOfUser",GetEnterprisesOfUser)
 			//	user.GET("/getProjectsOfUser",GetProjectsOfUser)
 			//}
-			//
+
 			blog := api.Group("/blog")
 			blog.Use(cors.Default())
 			{
@@ -49,14 +49,13 @@ func InitRouter(r *gin.Engine) {
 					blog.DELETE("", DeleteBlog)
 				}
 			}
-			//
-			//admin:=api.Group("/admin")
-			//admin.Use(cors.Default(),AuthRoot())
-			//{
-			//	blog.POST("/enableBlog/:blog_id",EnableBlog)
-			//	blog.GET("/getBlogForbidden",GetBlogForbiddens)
-			//}
-			//
+
+			admin := api.Group("/admin")
+			admin.Use(cors.Default(), AuthRoot())
+			{
+				blog.POST("/enableBlog/:blog_id", EnableBlog)
+				blog.GET("/getBlogForbidden", GetBlogForbiddens)
+			}
 
 		}
 	}

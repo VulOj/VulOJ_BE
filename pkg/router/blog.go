@@ -178,3 +178,51 @@ func DeleteBlog(context *gin.Context) {
 	})
 	return
 }
+
+func GetBlogForbiddens(context *gin.Context) {
+	page, _ := strconv.Atoi(context.Query("page"))
+	listSize, _ := strconv.Atoi(context.Query("blog_num"))
+	blogForbiddens := services.GetBlogForbiddens(page, listSize, true)
+	var results []map[string]interface{}
+	for _, temp := range blogForbiddens {
+		user, _ := services.GetUserByEmail(temp.AuthEmail)
+		time, _ := util.ConvertShanghaiTimeZone(temp.PublishTimestamp)
+		results = append(results, map[string]interface{}{
+			"blog_id":           temp.ID,
+			"title":             temp.Title,
+			"content":           temp.Content,
+			"auth_email":        temp.AuthEmail,
+			"author_name":       user.Username,
+			"publish_time":      time.String(),
+			"organization_type": temp.OrganizationType,
+			"organization_id":   temp.OrganizationID,
+			"organization_name": temp.OrganizationName,
+		})
+	}
+	context.JSON(http.StatusOK, gin.H{
+		"msg": results,
+	})
+}
+func EnableBlog(context *gin.Context) {
+	blogId, _ := strconv.Atoi(context.Param("blog_id"))
+	blog, err := services.GetOneBlogForbidden(uint(blogId))
+	if &blog == nil {
+		context.Abort()
+		context.JSON(http.StatusNotFound, gin.H{`msg`: "不存在此blog"})
+	}
+	if err != nil {
+		context.JSON(http.StatusNotFound, gin.H{`err`: err.Error()})
+	} else {
+		err := services.EnableBlogAndDeleteForbiddenBlog(blog)
+		if err != nil {
+			context.JSON(http.StatusInternalServerError, gin.H{
+				"msg": "数据库插入删除错误",
+			})
+			return
+		} else {
+			context.JSON(http.StatusOK, gin.H{
+				"msg": "修改成功",
+			})
+		}
+	}
+}
