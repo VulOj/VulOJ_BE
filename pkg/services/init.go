@@ -35,7 +35,7 @@ var RedisClient *redis.Client
 
 func init() {
 	databaseInit()
-	emailInit()
+	//emailInit()
 	redisInit()
 }
 
