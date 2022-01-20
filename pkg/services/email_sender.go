@@ -17,7 +17,7 @@ func SendEmail(toEmail string, verifyCode string) (isfinished bool) {
 		}
 	}()
 	emailInit()
-	from := mail.Address{"Pivot Studio团队-楚天双创项目组", account}
+	from := mail.Address{"VulOJ", account}
 	to := mail.Address{"亲爱的用户", toEmail}
 	var err error
 	if err = client.Mail(from.Address); err != nil {

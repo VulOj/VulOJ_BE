@@ -163,7 +163,7 @@ func Auth() gin.HandlerFunc {
 
 func SendVerifyCode(context *gin.Context) {
 	email := strings.ToLower(context.PostForm("email"))
-	isMailWell := strings.Compare(email, "2984252780@qq.com")
+	isMailWell := strings.Compare(email, "shenboyu2020@163.com")
 	if isMailWell == 0 {
 		context.JSON(http.StatusInternalServerError, gin.H{
 			"msg": "发送验证码失败，请重试，如果多次失败，请联系管理员",
