@@ -24,10 +24,10 @@ func InitRouter(r *gin.Engine) {
 			user.POST("/login", Login)
 			user.POST("/changePassword", ChangePassword)
 			user.GET("/myself", GetMyselfInfo)
-			//	user.POST("/sendVerifyCode",
-			//		middleware.IpLimiter("post/sendVerifyApi",2),
-			//		middleware.EmailLimiter("email"),
-			//		SendVerifyCode)
+			user.POST("/sendVerifyCode",
+				middleware.IpLimiter("post/sendVerifyApi", 2),
+				middleware.EmailLimiter("email"),
+				SendVerifyCode)
 			//	user.POST("/changePasswordEmail", ChangePasswordByEmail)
 			//	user.POST("/changePasswordVerifyCode", ChangePasswordVerifyCode)
 			user.Use(Auth())

@@ -8,8 +8,8 @@
   },
   "EmailSenderSettings":{
     "email":"shenboyu2020@163.com",
-    "password":"WOEVMSPVCYASVDNS",
-    "servername":"smtp.163.com"
+    "password":"QSRJKWMQKOJGOBYM",
+    "servername":"smtp.163.com:465"
   },
   "RedisSettings": {
     "Address":"127.0.0.1",

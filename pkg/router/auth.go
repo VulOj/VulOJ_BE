@@ -1,6 +1,7 @@
 package router
 
 import (
+	"fmt"
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/models"
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/pkg/consts"
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/pkg/services"
@@ -157,5 +158,31 @@ func Auth() gin.HandlerFunc {
 			})
 			return
 		}
+	}
+}
+
+func SendVerifyCode(context *gin.Context) {
+	email := strings.ToLower(context.PostForm("email"))
+	isMailWell := strings.Compare(email, "2984252780@qq.com")
+	if isMailWell == 0 {
+		context.JSON(http.StatusInternalServerError, gin.H{
+			"msg": "发送验证码失败，请重试，如果多次失败，请联系管理员",
+		})
+		fmt.Println("邮件服务被恶意调用")
+		return
+	}
+	verifyCode := util.GenerateVerifyCode(consts.VERIFYCODE_LENGTH)
+	services.StoreEmailAndVerifyCodeInRedis(verifyCode, email)
+
+	if sendEmailSuccessful := services.SendEmail(email, verifyCode); sendEmailSuccessful {
+		context.JSON(http.StatusOK, gin.H{
+			"msg": "成功发送验证码，请注意查收",
+		})
+		return
+	} else {
+		context.JSON(http.StatusInternalServerError, gin.H{
+			"msg": "发送验证码失败，请重试，如果多次失败，请联系管理员",
+		})
+		return
 	}
 }
