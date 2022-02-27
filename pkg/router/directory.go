@@ -44,6 +44,7 @@ func DownloadVulhub() (err error) {
 	path := Getwd()
 	fmt.Println(path)
 	gitClone := exec.Command(directory.GIT_CLONE, directory.VULHUB_GIT)
+	fmt.Println(gitClone)
 	gitClone.Stdout = os.Stdout
 	err = gitClone.Run()
 	if err != nil {
@@ -56,7 +57,7 @@ func DownloadVulhub() (err error) {
 	//insert Vulhub into database
 	temp := models.Directories{
 		Name:                directory.VULHUB_NAME,
-		Path:                Getwd() + "/directory/" + directory.VULHUB_NAME,
+		Path:                Getwd() + directory.VULHUB_NAME,
 		Status:              true,
 		DownloadedTimestamp: util.GetTimeStamp(),
 	}
