@@ -35,7 +35,7 @@ var RedisClient *redis.Client
 
 func init() {
 	databaseInit()
-	//emailInit()
+	emailInit()
 	redisInit()
 }
 
@@ -59,9 +59,10 @@ func databaseInit() {
 	var holeUserType models.Auth
 	var blogType models.Blog
 	var commentType models.Comment
+	var directoryType models.Directories
 	//创建blogForbidden
 	var blogForbiddenType models.BlogForbidden
-	temp = append(temp, &holeUserType, &blogType, &commentType, &blogForbiddenType)
+	temp = append(temp, &holeUserType, &blogType, &commentType, &blogForbiddenType, &directoryType)
 	util.CreateTableIfNotExist(db, temp)
 
 	passwordHash := util.HashWithSalt("root")

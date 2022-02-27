@@ -34,30 +34,30 @@ func InitRouter(r *gin.Engine) {
 			//	user.GET("/getEnterpriseOfUser",GetEnterprisesOfUser)
 			//	user.GET("/getProjectsOfUser",GetProjectsOfUser)
 			//}
-
-			blog := api.Group("/blog")
-			blog.Use(cors.Default())
-			{
-				blog.GET("/getBlogNumber", GetBlogsNumber)
-				blog.GET("", GetBlogs)
-				blog.GET("/detail/:blog_id", GetBlog)
-				blog.GET("/comment/:blog_id", GetCommentOfBlog)
-				blog.Use(Auth())
-				{
-					blog.POST("/comment", AddComment)
-					blog.POST("", middleware.IpLimiter("post/add_blog", 5), AddBlog)
-					blog.DELETE("", DeleteBlog)
-				}
-			}
-
-			admin := api.Group("/admin")
-			admin.Use(cors.Default(), AuthRoot())
-			{
-				blog.POST("/enableBlog/:blog_id", EnableBlog)
-				blog.GET("/getBlogForbidden", GetBlogForbiddens)
-			}
-
 		}
+
+		blog := api.Group("/blog")
+		blog.Use(cors.Default())
+		{
+			blog.GET("/getBlogNumber", GetBlogsNumber)
+			blog.GET("", GetBlogs)
+			blog.GET("/detail/:blog_id", GetBlog)
+			blog.GET("/comment/:blog_id", GetCommentOfBlog)
+			blog.Use(Auth())
+			{
+				blog.POST("/comment", AddComment)
+				blog.POST("", middleware.IpLimiter("post/add_blog", 5), AddBlog)
+				blog.DELETE("", DeleteBlog)
+			}
+		}
+
+		admin := api.Group("/admin")
+		admin.Use(cors.Default(), AuthRoot())
+		{
+			blog.POST("/enableBlog/:blog_id", EnableBlog)
+			blog.GET("/getBlogForbidden", GetBlogForbiddens)
+		}
+
 	}
 
 }
