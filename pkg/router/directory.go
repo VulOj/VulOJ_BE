@@ -1,6 +1,7 @@
 package router
 
 import (
+	"fmt"
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/directory"
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/models"
 	"github.com/VulOJ/Vulnerable_Online_Judge_Project/pkg/services"
@@ -38,16 +39,17 @@ func DownloadDirectory(c *gin.Context) {
 }
 func DownloadVulhub() (err error) {
 
-	//fmt.Println(directory.VULHUB_URL)
-	//fmt.Println(directory.VULHUB_GIT)
-	//path := Getwd()
-	//fmt.Println(path)
+	fmt.Println(directory.VULHUB_URL)
+	fmt.Println(directory.VULHUB_GIT)
+	path := Getwd()
+	fmt.Println(path)
 	gitClone := exec.Command(directory.GIT_CLONE, directory.VULHUB_GIT)
 	gitClone.Stdout = os.Stdout
 	err = gitClone.Run()
 	if err != nil {
 		return
 	}
+	fmt.Println("done")
 	//Download Vulhub successfully
 
 	//insert Vulhub into database
