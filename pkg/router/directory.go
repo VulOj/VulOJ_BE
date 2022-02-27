@@ -47,6 +47,7 @@ func DownloadVulhub() (err error) {
 	gitClone.Stdout = os.Stdout
 	err = gitClone.Run()
 	if err != nil {
+		fmt.Println(err)
 		return
 	}
 	fmt.Println("done")
