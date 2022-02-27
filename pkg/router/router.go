@@ -54,8 +54,12 @@ func InitRouter(r *gin.Engine) {
 		admin := api.Group("/admin")
 		admin.Use(cors.Default(), AuthRoot())
 		{
-			blog.POST("/enableBlog/:blog_id", EnableBlog)
-			blog.GET("/getBlogForbidden", GetBlogForbiddens)
+			//blog
+			admin.POST("/enableBlog/:blog_id", EnableBlog)
+			admin.GET("/getBlogForbidden", GetBlogForbiddens)
+
+			//directory
+			admin.POST("/downloadDirectory/:dir_name", DownloadDirectory)
 		}
 
 	}
