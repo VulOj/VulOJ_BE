@@ -9,6 +9,5 @@ import (
 func main() {
 	r := gin.Default()
 	router.InitRouter(r)
-	router.DownloadVulhub()
 	r.Run(":8080")
 }

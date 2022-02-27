@@ -59,7 +59,7 @@ func InitRouter(r *gin.Engine) {
 			admin.GET("/getBlogForbidden", GetBlogForbiddens)
 
 			//directory
-			admin.POST("/downloadDirectory/:dir_name", DownloadDirectory)
+			//admin.POST("/downloadDirectory/:dir_name", DownloadDirectory)
 		}
 
 	}

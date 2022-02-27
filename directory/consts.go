@@ -2,7 +2,7 @@ package directory
 
 const (
 	//git clone
-	GIT_CLONE = "wget"
+	GIT_CLONE = "git clone"
 
 	//Vulhub
 	VULHUB_NAME = "vulhub"

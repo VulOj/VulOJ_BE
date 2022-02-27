@@ -37,6 +37,8 @@ func DownloadDirectory(c *gin.Context) {
 	}
 	return
 }
+
+//bug in command  could be issue
 func DownloadVulhub() (err error) {
 
 	fmt.Println(directory.VULHUB_URL)
