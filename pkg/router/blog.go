@@ -121,9 +121,9 @@ func AddComment(context *gin.Context) {
 func AddBlog(context *gin.Context) {
 	title := context.PostForm("title")
 	content := context.PostForm("content")
-	organizationType := context.PostForm("organization_type")
-	organizationID, _ := strconv.Atoi(context.PostForm("organization_id"))
-	organizationName := context.PostForm("organization_name")
+	//organizationType := context.PostForm("organization_type")
+	//organizationID, _ := strconv.Atoi(context.PostForm("organization_id"))
+	//organizationName := context.PostForm("organization_name")
 	authEmail, _ := util.GetEmailFromToken(context)
 	if content == "" || title == "" {
 		context.JSON(http.StatusBadRequest, gin.H{
@@ -137,9 +137,9 @@ func AddBlog(context *gin.Context) {
 			PublishTimestamp: time.Now(),
 			Title:            title,
 			Content:          content,
-			OrganizationType: organizationType,
-			OrganizationID:   uint(organizationID),
-			OrganizationName: organizationName,
+			//OrganizationType: organizationType,
+			//OrganizationID:   uint(organizationID),
+			//OrganizationName: organizationName,
 		},
 	}
 
