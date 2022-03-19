@@ -203,6 +203,7 @@ func GetBlogForbiddens(context *gin.Context) {
 		"msg": results,
 	})
 }
+
 func EnableBlog(context *gin.Context) {
 	blogId, _ := strconv.Atoi(context.Param("blog_id"))
 	blog, err := services.GetOneBlogForbidden(uint(blogId))
