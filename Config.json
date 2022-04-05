@@ -1,0 +1,19 @@
+{
+  "Key":"a9fcc37087ec38fdea95b26a15b2569a7470024712ef36adc5bb8b9fd9eb53d8",
+  "DbSettings":{
+    "Username":"root",
+    "Password" :"123456",
+    "Hostname" :"127.0.0.1:3306",
+    "Dbname" :"VulOJ"
+  },
+  "EmailSenderSettings":{
+    "email":"shenboyu2020@163.com",
+    "password":"QSRJKWMQKOJGOBYM",
+    "servername":"smtp.163.com:465"
+  },
+  "RedisSettings": {
+    "Address":"127.0.0.1",
+    "Password":"" ,
+    "Port": "6379"
+  }
+}
