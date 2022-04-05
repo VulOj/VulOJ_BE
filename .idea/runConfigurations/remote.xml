@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="remote" type="GoApplicationRunConfiguration" factoryName="Go Application" singleton="false">
+    <module name="VulOJ_BE" />
+    <target name="root@45.76.96.123:22" />
+    <working_directory value="$PROJECT_DIR$" />
+    <kind value="DIRECTORY" />
+    <package value="VulOJ_BE" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/pkg/router/auth.go" />
+    <method v="2" />
+  </configuration>
+</component>
